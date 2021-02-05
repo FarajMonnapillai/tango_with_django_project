@@ -1,0 +1,4 @@
+conda activate rango
+D:
+cd workspace/tango_with_django_project
+python manage.py runserver
