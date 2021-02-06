@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.setti
 import django
 django.setup()
 from rango.models import Category, Page
-
+import random
 def populate():
     # First, we will create lists of dictionaries containing the pages
     # we want to add into each category.
@@ -18,7 +18,8 @@ def populate():
         {'title':'How to Think like a Computer Scientist',
         'url':'http://www.greenteapress.com/thinkpython/'},
         {'title':'Learn Python in 10 Minutes',
-        'url':'http://www.korokithakis.net/tutorials/python/'} ]
+        'url':'http://www.korokithakis.net/tutorials/python/'}
+        ]
 
     django_pages = [
     {'title':'Official Django Tutorial',
@@ -26,7 +27,9 @@ def populate():
     {'title':'Django Rocks',
     'url':'http://www.djangorocks.com/'},
     {'title':'How to Tango with Django',
-    'url':'http://www.tangowithdjango.com/'} ]
+    'url':'http://www.tangowithdjango.com/'}
+    ]
+    
 
     other_pages = [
     {'title':'Bottle',
@@ -47,7 +50,8 @@ def populate():
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data['views'], cat_data['likes'])
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'])
+            views = random.randint(0, 69)
+            add_page(c, p['title'], p['url'], views)
 
     # Print out the categories we have added.
     
